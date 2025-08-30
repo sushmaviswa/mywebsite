@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Great+Vibes&display=swap');
+
+body {
+    min-height: 100vh;
+    background-image: url('assets/images/bg.png');
+    background-size: cover;           /* Ensures the image covers the whole area */
+    background-repeat: no-repeat;      /* Prevents tiling */
+    background-position: center;       /* Centers the image */
+    font-family: 'Josefin Sans', sans-serif;
+    color: #333;
+    margin: 0;
+    display: flex;
+    justify-content: center;  /* horizontal */
+    align-items: center;      /* vertical */
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.3); /* 0.5 = 50% transparent white overlay */
+    z-index: 0;
+    pointer-events: none;
+}
+
+header {
+    background: linear-gradient(135deg, #ff6b6b, #f7d94c);
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    width: 60%; /* or a fixed width like 800px */
+    margin: 20px auto; /* auto makes left/right margins equal */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #f7d94c;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.music-player {
+    position: fixed;
+    bottom: 70px;
+    left: 20px;
+    width: 300px;
+    height: 160px;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    padding: 16px 24px 12px 24px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-image: url('assets/images/album.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.music-player::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.7); /* Adjust opacity for desired effect */
+    border-radius: 18px;
+    z-index: 0;
+}
+
+.music-player > * {
+    position: relative;
+    z-index: 1;
+}
+
+.music-info .song-title {
+    font-weight: bold;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+
+.music-info .artist-name {
+    font-size: 0.95em;
+    color: #a259c6;
+    margin-top: 2px;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#progress-bar {
+    flex: 1;
+    accent-color: #a259c6;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.music-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.music-buttons button {
+    background: none;
+    border: none;
+    font-size: 1.35em;
+    cursor: pointer;
+    color: #6d47d9;
+    transition: color 0.2s;
+    padding: 4px 8px;
+    border-radius: 50%;
+}
+
+.music-buttons button:hover {
+    color: #f7d94c;
+    background: #eee;
+}
+
+#play-btn {
+    font-size: 1.7em;
+    background: none;
+    color: inherit;
+}
+
+.vinyl-img {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 48px;
+    height: 48px;
+    pointer-events: none;
+}
+
+.cloud {
+    position: absolute;
+    top: 2%;
+    width: 350px;
+    height: 120px;
+    background-image: url('assets/images/cloud.png'); /* Use your cloud image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.7;
+    transition: left 0.3s, top 0.3s;
+}
+
+.nav-icon {
+    width: 32px;
+    height: 32px;
+    opacity: 0.8;
+    transition: transform 0.2s;
+}
+
+.nav-icon:hover {
+    transform: scale(1.15) rotate(-8deg);
+    opacity: 1;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 220px);
+    background: none;
+    text-align: center;
+    z-index: 1002;
+    padding: 10px 0;
+}
+
+.bottom-nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bottom-nav li {
+    position: relative;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; text-shadow: 0 0 8px #fff, 0 0 16px #f7d94c; }
+    20% { opacity: 0.7; text-shadow: 0 0 4px #fff, 0 0 8px #f7d94c; }
+    40% { opacity: 1; text-shadow: 0 0 12px #fff, 0 0 24px #f7d94c; }
+    60% { opacity: 0.8; text-shadow: 0 0 6px #fff, 0 0 12px #f7d94c; }
+    80% { opacity: 1; text-shadow: 0 0 10px #fff, 0 0 20px #f7d94c; }
+}
+
+.bottom-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 6px 12px;
+    transition: color 0.2s;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes blink-yellow-white {
+    0%, 100% { color: #f7d94c; }
+    50% { color: #fff; }
+}
+
+.bottom-nav a:hover {
+    color: #f9de63;
+    animation: blink-yellow-white 1.5s linear infinite;
+}
+
+.bottom-nav .active::after {
+    content: '•';
+    color: #f7d94c;
+    font-size: 1.5em;
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bottom-nav a.active {
+    color: #f7d94c;
+}
+
+.profile-pic-container {
+    position: fixed;
+    top: 100px;
+    right: 60px;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: floaty 3s ease-in-out infinite;
+}
+
+.profile-pic {
+    background-image: url('assets/gif/profile.gif');
+    background-size: 125%;
+    background-position: center;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 4px solid #0c0a0313;
+    box-shadow: 0 4px 16px rgba(10, 1, 14, 0.18);
+}
+
+.line {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Fuzzy Bubbles', cursive;
+  color: #f0eaff;
+  line-height: 1.4;
+  text-shadow: 
+     0 0 2px rgb(255, 255, 255),  /* subtle glow around letters */
+     0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Floaty animation */
+@keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+}
+
+.firefly {
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff700 60%, #f7d94c 100%);
+  box-shadow: 0 0 24px 8px #fff700, 0 0 48px 16px #f7d94c;
+  pointer-events: none;
+  z-index: 2000;
+  transition: background 0.2s;
+}
+
+.shooting-star {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(-45deg, white, rgba(255,255,255,0));
+  opacity: 0;
+  transform: rotate(45deg);
+  animation: shoot 3s linear infinite;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-500px) translateY(500px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.shooting-star:nth-child(1) {
+  top: 20%;
+  left: 60%;
+  animation-delay: 2s;
+}
+
+.shooting-star:nth-child(2) {
+  top: 40%;
+  left: 40%;
+  animation-delay: 5s;
+}
+
+.shooting-star:nth-child(3) {
+  top: 10%;
+  left: 30%;
+  animation-delay: 8s;
+}
+
+/* Thought bubble cloud */
+.thought-bubble {
+  position: absolute;
+  right: 110%;               /* put bubble to the left of the pic; use left:110% to put it on the right */
+  top: 10px;                 /* vertical position relative to the pic */
+  max-width: 220px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #4b3b8f;            /* dreamy purple text */
+  font: 600 13px/1.35 'Josefin Sans', Arial, sans-serif;
+  border-radius: 999px;      /* pill shape */
+  box-shadow: 0 6px 24px rgba(10, 1, 14, 0.18), 0 0 20px rgba(255,255,255,0.6);
+  backdrop-filter: blur(2px);
+  text-align: center;
+  z-index: 1200;
+}
+
+/* Little puffs (tail) */
+.thought-bubble::after,
+.thought-bubble::before {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(10, 1, 14, 0.18), 0 0 12px rgba(255,255,255,0.6);
+}
+
+.thought-bubble::after {
+  width: 14px; height: 14px;
+  right: -8px;               /* move tail toward the photo */
+  top: 24px;
+}
+
+.thought-bubble::before {
+  width: 9px; height: 9px;
+  right: -18px;
+  top: 38px;
+}
+
+/* Optional: gentle float */
+@keyframes bubble-float {
+  0%,100% { transform: translateY(0) }
+  50%     { transform: translateY(-4px) }
+}
+.thought-bubble { animation: bubble-float 4s ease-in-out infinite; }
+
+.social-icons {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  align-items: center;      /* center under profile pic */
+  gap: 16px;                /* space between icons */
+}
+
+.social-icons img {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 4px #a259c6); /* dreamy glow */
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2) rotate(-10deg);
+  filter: drop-shadow(0 0 8px #f7d94c); /* hover glow */
+}
