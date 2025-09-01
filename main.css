@@ -9,7 +9,6 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     color: #333;
     margin: 0;
-    display: flex;
     justify-content: center;  /* horizontal */
     align-items: center;      /* vertical */
 }
@@ -40,15 +39,6 @@ nav a:hover {
     text-decoration: underline;
 }
 
-section {
-    width: 60%; /* or a fixed width like 800px */
-    margin: 20px auto; /* auto makes left/right margins equal */
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 footer {
     background-color: #333;
     color: #fff;
@@ -69,22 +59,26 @@ footer a:hover {
 }
 
 .music-player {
-    position: fixed;
-    bottom: 70px;
-    left: 20px;
-    width: 300px;
-    height: 160px;
-    border-radius: 18px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-    padding: 16px 24px 12px 24px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-image: url('assets/images/album.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  position: fixed;
+  bottom: 10vh;
+  left: 2vw;
+  width: 30vw;
+  max-width: 320px;
+  height: 20vh;
+  min-height: 120px;
+  max-height: 180px;
+  border-radius: 2vw;
+  box-shadow: 0 0.4vw 1.6vw rgba(0,0,0,0.18);
+  padding: 1vw 2vw 1vw 2vw;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  background-image: url('assets/images/album.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: floaty 3s ease-in-out infinite;
 }
 
 .music-player::before {
@@ -164,19 +158,6 @@ footer a:hover {
     pointer-events: none;
 }
 
-.cloud {
-    position: absolute;
-    top: 2%;
-    width: 350px;
-    height: 120px;
-    background-image: url('assets/images/cloud.png'); /* Use your cloud image */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.7;
-    transition: left 0.3s, top 0.3s;
-}
-
 .nav-icon {
     width: 32px;
     height: 32px;
@@ -197,8 +178,8 @@ footer a:hover {
     width: calc(100% - 220px);
     background: none;
     text-align: center;
-    z-index: 1002;
-    padding: 10px 0;
+    z-index: 10;
+    padding: 10px;
 }
 
 .bottom-nav ul {
@@ -259,8 +240,8 @@ footer a:hover {
 
 .profile-pic-container {
     position: fixed;
-    top: 100px;
-    right: 60px;
+    top: 15%;
+    right: 3%;
     z-index: 1100;
     display: flex;
     flex-direction: column;
@@ -272,17 +253,19 @@ footer a:hover {
     background-image: url('assets/gif/profile.gif');
     background-size: 125%;
     background-position: center;
-    width: 170px;
-    height: 170px;
+    width: 14vw;
+    height: 14vw;
+    max-width: 170px;
+    max-height: 170px;
     border-radius: 50%;
     border: 4px solid #0c0a0313;
     box-shadow: 0 4px 16px rgba(10, 1, 14, 0.18);
 }
 
 .line {
-  margin-top: 12px;
+  margin-top: 12%;
   text-align: center;
-  font-size: 18px;
+  font-size: 100%;
   font-weight: 400;
   font-family: 'Fuzzy Bubbles', cursive;
   color: #f0eaff;
@@ -357,12 +340,12 @@ footer a:hover {
 .thought-bubble {
   position: absolute;
   right: 110%;               /* put bubble to the left of the pic; use left:110% to put it on the right */
-  top: 10px;                 /* vertical position relative to the pic */
-  max-width: 220px;
-  padding: 12px 16px;
+  top: 0%;                 /* vertical position relative to the pic */
+  max-width: 22%;
+  padding: 10% 10%;
   background: rgba(255, 255, 255, 0.9);
   color: #4b3b8f;            /* dreamy purple text */
-  font: 600 13px/1.35 'Josefin Sans', Arial, sans-serif;
+  font: 600 75%/1.35 'Josefin Sans', Arial, sans-serif;
   border-radius: 999px;      /* pill shape */
   box-shadow: 0 6px 24px rgba(10, 1, 14, 0.18), 0 0 20px rgba(255,255,255,0.6);
   backdrop-filter: blur(2px);
@@ -381,15 +364,17 @@ footer a:hover {
 }
 
 .thought-bubble::after {
-  width: 14px; height: 14px;
-  right: -8px;               /* move tail toward the photo */
-  top: 24px;
+  width: 15%; 
+  height: 15%;
+  right: -20%;
+  top: 20%;
 }
 
 .thought-bubble::before {
-  width: 9px; height: 9px;
-  right: -18px;
-  top: 38px;
+  width: 10%;
+  height: 10%;
+  right: -50%;
+  top: 35%;
 }
 
 /* Optional: gentle float */
@@ -417,4 +402,46 @@ footer a:hover {
 .social-icons img:hover {
   transform: scale(1.2) rotate(-10deg);
   filter: drop-shadow(0 0 8px #f7d94c); /* hover glow */
+}
+
+.scroll-container {
+  position: fixed;
+  top: 5%;
+  left: 30%;
+  width: 60%; /* adjust as needed */
+  height: 69%; /* adjust as needed */
+  max-width: 620px; /* adjust as needed */
+  max-height: 750px; /* adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1;
+  animation: floaty 3s ease-in-out infinite;
+}
+
+.scroll-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+  top: 0; 
+  left: 0;
+  z-index: 1;
+}
+
+.scroll-content {
+  position: absolute;
+  top: 20%; /* adjust for scroll image */
+  left: 5%;
+  right: 8%;
+  bottom: 10%;
+  z-index: 2;
+  text-align: center;
+  color: #3e2c13;
+  font-family: 'Great Vibes', cursive;
+  font-size: 120%;
+  line-height: 1;
+  overflow-y: auto;
+  background: transparent;
 }
