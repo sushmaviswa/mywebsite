@@ -1,15 +1,4 @@
 // This file contains JavaScript functionality for the website, including interactive elements and animations.
-// Add your custom scripts below.
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Example of an interactive element
-    const dreamButton = document.getElementById('dream-button');
-    if (dreamButton) {
-        dreamButton.addEventListener('click', () => {
-            alert('Dream big and shine bright!');
-        });
-    }
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     const audio = document.getElementById('dreamer-audio');
@@ -104,5 +93,36 @@ document.addEventListener('DOMContentLoaded', function() {
         firefly.style.left = e.pageX + 'px';
         firefly.style.top = e.pageY + 'px';
     });
+
+    // Artwork carousel logic
+  const artworks = [
+    'assets/images/Art1.jpg',
+    'assets/images/Art2.jpg',
+    'assets/images/Art3.jpg',
+    'assets/images/Art4.jpg'
+  ];
+  let currentArt = 0;
+  const artworkImg = document.getElementById('artwork-img');
+  const leftArrow = document.querySelector('.left-arrow');
+  const rightArrow = document.querySelector('.right-arrow');
+
+  function showArtwork(index) {
+    artworkImg.style.opacity = 0;
+    setTimeout(() => {
+      artworkImg.src = artworks[index];
+      artworkImg.style.opacity = 1;
+    }, 150);
+  }
+
+  if (leftArrow && rightArrow && artworkImg) {
+    leftArrow.addEventListener('click', () => {
+      currentArt = (currentArt - 1 + artworks.length) % artworks.length;
+      showArtwork(currentArt);
+    });
+    rightArrow.addEventListener('click', () => {
+      currentArt = (currentArt + 1) % artworks.length;
+      showArtwork(currentArt);
+    });
+  }
 });
 
