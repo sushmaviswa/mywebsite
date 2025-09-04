@@ -61,8 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         about: document.getElementById('about-section'),
         drawings: document.getElementById('drawings-section'),
         sky: document.getElementById('sky-section'),
-        kpop: document.getElementById('kpop-section'),
-        other: document.getElementById('other-section')
+        kpop: document.getElementById('kpop-section')
     };
 
     function showSection(page) {
