@@ -433,15 +433,17 @@ footer a:hover {
 .scroll-content {
   position: absolute;
   top: 20%; /* adjust for scroll image */
-  left: 5%;
-  right: 8%;
-  bottom: 10%;
+  left: 27%;
   z-index: 2;
-  text-align: center;
+  text-align: justify;
   color: #3e2c13;
   font-family: 'Great Vibes', cursive;
-  font-size: 120%;
+  font-size: 140%;
+  line-height: 1.5;
+  max-width: 40%;
+}
+
+#about-section {
+  font-size: 65%;
   line-height: 1;
-  overflow-y: auto;
-  background: transparent;
 }
