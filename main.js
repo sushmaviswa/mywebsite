@@ -60,8 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         welcome: document.getElementById('welcome-section'),
         about: document.getElementById('about-section'),
         drawings: document.getElementById('drawings-section'),
-        sky: document.getElementById('sky-section'),
-        kpop: document.getElementById('kpop-section')
+        sky: document.getElementById('sky-section')
     };
 
     function showSection(page) {
@@ -121,6 +120,44 @@ document.addEventListener('DOMContentLoaded', function() {
     rightArrow.addEventListener('click', () => {
       currentArt = (currentArt + 1) % artworks.length;
       showArtwork(currentArt);
+    });
+  }
+
+  // Sky photo carousel logic
+  const skyPhotos = [
+    'assets/images/sky1.jpg',
+    'assets/images/sky2.jpg',
+    'assets/images/sky3.jpg',
+    'assets/images/sky4.jpg',
+    'assets/images/sky5.jpg',
+    'assets/images/sky6.jpg',
+    'assets/images/sky7.jpg',
+    'assets/images/sky8.jpg',
+    'assets/images/sky9.jpg'
+  ];
+  let currentSky = 0;
+  const skyImg = document.getElementById('sky-img');
+  const skyLeftArrow = document.querySelector('.sky-left-arrow');
+  const skyRightArrow = document.querySelector('.sky-right-arrow');
+
+  function showSky(index) {
+    if (skyImg) {
+      skyImg.style.opacity = 0;
+      setTimeout(() => {
+        skyImg.src = skyPhotos[index];
+        skyImg.style.opacity = 1;
+      }, 150);
+    }
+  }
+
+  if (skyLeftArrow && skyRightArrow && skyImg) {
+    skyLeftArrow.addEventListener('click', () => {
+      currentSky = (currentSky - 1 + skyPhotos.length) % skyPhotos.length;
+      showSky(currentSky);
+    });
+    skyRightArrow.addEventListener('click', () => {
+      currentSky = (currentSky + 1) % skyPhotos.length;
+      showSky(currentSky);
     });
   }
 });
