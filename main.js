@@ -1,104 +1,110 @@
 // This file contains JavaScript functionality for the website, including interactive elements and animations.
 
-document.addEventListener('DOMContentLoaded', function() {
-    const audio = document.getElementById('dreamer-audio');
-    const playBtn = document.getElementById('play-btn');
-    const progressBar = document.getElementById('progress-bar');
-    const currentTime = document.getElementById('current-time');
-    const duration = document.getElementById('duration');
-    audio.volume = 0.5; // Set volume to 50%
+document.addEventListener('DOMContentLoaded', () => {
 
-    let isPlaying = false;
+  // Music player logic
+  const audio = document.getElementById('dreamer-audio');
+  const playBtn = document.getElementById('play-btn');
+  const progressBar = document.getElementById('progress-bar');
+  const currentTime = document.getElementById('current-time');
+  const duration = document.getElementById('duration');
+  const vinylImg = document.getElementById('vinyl-img');
 
-    // Set duration when metadata is loaded
-    audio.addEventListener('loadedmetadata', function() {
-        duration.textContent = formatTime(audio.duration);
-        progressBar.max = Math.floor(audio.duration);
+  let isPlaying = false;
+  audio.volume = 0.5;
+
+  // Set duration when metadata is loaded
+  audio.addEventListener('loadedmetadata', () => {
+      duration.textContent = formatTime(audio.duration);
+      progressBar.max = Math.floor(audio.duration);
+  });
+
+  // Play/pause toggle
+  playBtn.addEventListener('click', () => {
+      const playIcon = playBtn.querySelector('img');
+      
+      if (!isPlaying) {
+          audio.muted = false;
+          audio.play();
+          playIcon.src = 'assets/icons/play.png';
+          playIcon.alt = 'Pause';
+          vinylImg.src = 'assets/gif/vinyl.gif'; // Show animated vinyl
+          isPlaying = true;
+      } else {
+          audio.pause();
+          playIcon.src = 'assets/icons/pause.png';
+          playIcon.alt = 'Play';
+          vinylImg.src = 'assets/images/static.jpg'; // Show static vinyl
+          isPlaying = false;
+      }
+  });
+
+  // Update progress bar and time
+  audio.addEventListener('timeupdate', () =>{
+      progressBar.value = Math.floor(audio.currentTime);
+      currentTime.textContent = formatTime(audio.currentTime);
+  });
+
+  // Seek functionality
+  progressBar.addEventListener('input', () => {
+      audio.currentTime = progressBar.value;
+  });
+
+  function formatTime(sec) {
+      sec = Math.floor(sec);
+      let min = Math.floor(sec / 60);
+      let s = sec % 60;
+      return `${min}:${s < 10 ? '0' : ''}${s}`;
+  }
+
+  // Bottom navigation active dot logic
+  const navLinks = document.querySelectorAll('.bottom-nav .nav-link');
+  const sections = {
+    welcome: document.getElementById('welcome-section'),
+    about: document.getElementById('about-section'),
+    drawings: document.getElementById('drawings-section'),
+    sky: document.getElementById('sky-section')
+  };
+
+  function showSection(page) {
+    Object.keys(sections).forEach(key => {
+      sections[key].style.display = (key === page) ? 'block' : 'none';
     });
+  }
 
-    // Play/pause toggle
-    playBtn.addEventListener('click', function() {
-        const playIcon = playBtn.querySelector('img'); // Get the <img> inside the button
-        const vinylImg = document.getElementById('vinyl-img');
-        if (!isPlaying) {
-            audio.muted = false;
-            audio.play();
-            playIcon.src = 'assets/icons/play.png';
-            playIcon.alt = 'Pause';
-            vinylImg.src = 'assets/gif/vinyl.gif'; // Show animated vinyl
-            isPlaying = true;
-        } else {
-            audio.pause();
-            playIcon.src = 'assets/icons/pause.png';
-            playIcon.alt = 'Play';
-            vinylImg.src = 'assets/images/static.jpg'; // Show static vinyl
-            isPlaying = false;
-        }
+  // Set Welcome as default on load
+  showSection('welcome');
+  
+  navLinks.forEach(l => l.classList.remove('active'));
+  const defaultLink = document.querySelector('.bottom-nav .nav-link[data-page="welcome"]');
+  if (defaultLink) {
+    defaultLink.classList.add('active');
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+      const page = this.getAttribute('data-page');
+      showSection(page);
     });
+  });
 
-    // Update progress bar and time
-    audio.addEventListener('timeupdate', function() {
-        progressBar.value = Math.floor(audio.currentTime);
-        currentTime.textContent = formatTime(audio.currentTime);
-    });
+  const firefly = document.querySelector('.firefly');
+  document.addEventListener('mousemove', (e) => {
+    firefly.style.left = e.pageX + 'px';
+    firefly.style.top = e.pageY + 'px';
+  });
 
-    // Seek functionality
-    progressBar.addEventListener('input', function() {
-        audio.currentTime = progressBar.value;
-    });
-
-    function formatTime(sec) {
-        sec = Math.floor(sec);
-        let min = Math.floor(sec / 60);
-        let s = sec % 60;
-        return `${min}:${s < 10 ? '0' : ''}${s}`;
-    }
-
-    // Bottom navigation active dot logic
-    const navLinks = document.querySelectorAll('.bottom-nav .nav-link');
-    const sections = {
-        welcome: document.getElementById('welcome-section'),
-        about: document.getElementById('about-section'),
-        drawings: document.getElementById('drawings-section'),
-        sky: document.getElementById('sky-section')
-    };
-
-    function showSection(page) {
-        Object.keys(sections).forEach(key => {
-            sections[key].style.display = (key === page) ? 'block' : 'none';
-        });
-    }
-
-    // Set Welcome as default on load
-    showSection('welcome');
-    navLinks.forEach(l => l.classList.remove('active'));
-    const defaultLink = document.querySelector('.bottom-nav .nav-link[data-page="welcome"]');
-    if (defaultLink) defaultLink.classList.add('active');
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-            const page = this.getAttribute('data-page');
-            showSection(page);
-        });
-    });
-
-    const firefly = document.querySelector('.firefly');
-
-    document.addEventListener('mousemove', (e) => {
-        firefly.style.left = e.pageX + 'px';
-        firefly.style.top = e.pageY + 'px';
-    });
-
-    // Artwork carousel logic
+  // Artwork carousel logic
   const artworks = [
     'assets/images/Art1.jpg',
     'assets/images/Art2.jpg',
     'assets/images/Art3.jpg',
     'assets/images/Art4.jpg'
   ];
+
   let currentArt = 0;
   const artworkImg = document.getElementById('artwork-img');
   const leftArrow = document.querySelector('.left-arrow');
@@ -135,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'assets/images/sky8.jpg',
     'assets/images/sky9.jpg'
   ];
+  
   let currentSky = 0;
   const skyImg = document.getElementById('sky-img');
   const skyLeftArrow = document.querySelector('.sky-left-arrow');
