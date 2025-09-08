@@ -57,40 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return `${min}:${s < 10 ? '0' : ''}${s}`;
   }
 
-  // Bottom navigation active dot logic
-  const navLinks = document.querySelectorAll('.bottom-nav .nav-link');
-  const sections = {
-    welcome: document.getElementById('welcome-section'),
-    about: document.getElementById('about-section'),
-    drawings: document.getElementById('drawings-section'),
-    sky: document.getElementById('sky-section')
-  };
-
-  function showSection(page) {
-    Object.keys(sections).forEach(key => {
-      sections[key].style.display = (key === page) ? 'block' : 'none';
-    });
-  }
-
-  // Set Welcome as default on load
-  showSection('welcome');
-  
-  navLinks.forEach(l => l.classList.remove('active'));
-  const defaultLink = document.querySelector('.bottom-nav .nav-link[data-page="welcome"]');
-  if (defaultLink) {
-    defaultLink.classList.add('active');
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      const page = this.getAttribute('data-page');
-      showSection(page);
-    });
-  });
-
   const firefly = document.querySelector('.firefly');
   document.addEventListener('mousemove', (e) => {
     firefly.style.left = e.pageX + 'px';

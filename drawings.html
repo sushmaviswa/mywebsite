@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="drawings-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="music-player">
+    <div class="music-info">
+        <div class="song-title">Dreamer</div>
+        <div class="artist-name">TXT</div>
+    </div>
+    <div class="music-controls">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress-bar" value="0" min="0" max="100">
+        <span id="duration">3:15</span>
+    </div>
+    <div class="music-buttons">
+        <button id="prev-btn"><img src="assets/icons/back.png" alt="Previous" /></button>
+        <button id="play-btn"><img src="assets/icons/pause.png" alt="Play" /></button>
+        <button id="next-btn"><img src="assets/icons/forward.png" alt="Next" /></button>
+    </div>
+    <audio id="dreamer-audio" src="assets/audio/Dreamer.mp3" muted></audio>
+    <img class="vinyl-img" id="vinyl-img" src="assets/images/static.jpg" alt="Vinyl" />
+</div>
+
+<div class="scroll-container">
+  <img src="assets/images/scroll.png" alt="Scroll" class="scroll-img" />
+  <div class="scroll-content">
+
+    <section id="drawings-section" class="page-section">
+        <h2>Artworks</h2>
+        <p>Welcome to my little gallery of oil pastel landscapes! Now, full 
+		disclaimer: I have zero artistic creativity, so most of these are 
+		complete flukes. Honestly, they are just my mediocre attempts at trying 
+		to imitate some art tutorials I found on YouTube. </p>
+
+		<div class="artwork-carousel">
+			<button class="arrow-btn left-arrow">
+				<img src="assets/images/back.png" alt="Previous" />
+			</button>
+			<img id="artwork-img" src="assets/images/Art1.jpg" alt="Artwork" />
+			<button class="arrow-btn right-arrow">
+				<img src="assets/images/next.png" alt="Next" />
+			</button>
+		</div>
+
+    </section>
+  </div>
+</div>
+
+<div class="profile-pic-container">
+    <div class="profile-pic"></div>
+    <div class="thought-bubble">“Floating through life like a pro.”</div>
+    <div class="line">
+        <p>✦ gemini | '06 | isfp-t ✦</p>
+    </div>
+
+    <div class="social-icons">
+    <a href="https://github.com/sushmaviswa" target="_blank">
+      <img src="assets/icons/github.svg" alt="GitHub">
+    </a>
+    <a href="https://linkedin.com/in/sushma-viswanathan" target="_blank">
+      <img src="assets/icons/linkedin.svg" alt="LinkedIn">
+    </a>
+    <a href="https://music.amazon.in/my/playlists/60ab2e8d-b71b-48d7-a36d-a77bd95354cb" target="_blank">
+      <img src="assets/icons/music.svg" alt="Amazon Music">
+    </a>
+  </div>
+
+</div>
+
+<div class="firefly"></div>
+
+<div class="sky">
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+</div>
+
+  <div id="bottom-nav">
+		<ul>
+			<li><a href="index.html"> Welcome!</a></li>
+			<li><a href="about.html">About Me</a></li>
+			<li><a>● Artworks</a></li>
+			<li><a href="sky.html">Sky Photography Obsession</a></li>
+		</ul>
+	</div>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
