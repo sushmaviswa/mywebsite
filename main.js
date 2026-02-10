@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
       currentTime.textContent = formatTime(audio.currentTime);
   });
 
-  // Seek functionality
   progressBar.addEventListener('input', () => {
       audio.currentTime = progressBar.value;
   });
