@@ -3,9 +3,9 @@
 body {
     min-height: 100vh;
     background-image: url('assets/images/bg.png');
-    background-size: cover;           /* Ensures the image covers the whole area */
-    background-repeat: no-repeat;      /* Prevents tiling */
-    background-position: center;       /* Centers the image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     font-family: 'Josefin Sans', sans-serif;
     color: #333;
     margin: 0;
@@ -38,7 +38,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.7); /* Adjust opacity for desired effect */
+    background: rgba(255,255,255,0.7);
     border-radius: 18px;
     z-index: 0;
 }
@@ -211,7 +211,7 @@ body {
   color: #f0eaff;
   line-height: 1.4;
   text-shadow: 
-     0 0 2px rgb(255, 255, 255),  /* subtle glow around letters */
+     0 0 2px rgb(255, 255, 255),
      0 0 4px rgba(255, 255, 255, 0.4);
 }
 
@@ -276,24 +276,22 @@ body {
   animation-delay: 8s;
 }
 
-/* Thought bubble cloud */
 .thought-bubble {
   position: absolute;
-  right: 110%;               /* put bubble to the left of the pic; use left:110% to put it on the right */
-  top: 0%;                 /* vertical position relative to the pic */
+  right: 110%;
+  top: 0%;
   max-width: 22%;
   padding: 10% 10%;
   background: rgba(255, 255, 255, 0.9);
-  color: #4b3b8f;            /* dreamy purple text */
+  color: #4b3b8f;
   font: 600 75%/1.35 'Josefin Sans', Arial, sans-serif;
-  border-radius: 999px;      /* pill shape */
+  border-radius: 999px;
   box-shadow: 0 6px 24px rgba(10, 1, 14, 0.18), 0 0 20px rgba(255,255,255,0.6);
   backdrop-filter: blur(2px);
   text-align: center;
   z-index: 1200;
 }
 
-/* Little puffs (tail) */
 .thought-bubble::after,
 .thought-bubble::before {
   content: "";
@@ -317,7 +315,6 @@ body {
   top: 35%;
 }
 
-/* Optional: gentle float */
 @keyframes bubble-float {
   0%,100% { transform: translateY(0) }
   50%     { transform: translateY(-4px) }
@@ -327,31 +324,31 @@ body {
 .social-icons {
   margin-top: 12px;
   display: flex;
-  flex-direction: column;   /* stack vertically */
-  align-items: center;      /* center under profile pic */
-  gap: 16px;                /* space between icons */
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 .social-icons img {
   width: 48px;
   height: 48px;
-  filter: drop-shadow(0 0 4px #a259c6); /* dreamy glow */
+  filter: drop-shadow(0 0 4px #a259c6);
   transition: transform 0.2s, filter 0.2s;
 }
 
 .social-icons img:hover {
   transform: scale(1.2) rotate(-10deg);
-  filter: drop-shadow(0 0 8px #f7d94c); /* hover glow */
+  filter: drop-shadow(0 0 8px #f7d94c);
 }
 
 .scroll-container {
   position: fixed;
   top: 5%;
   left: 30%;
-  width: 60%; /* adjust as needed */
-  height: 69%; /* adjust as needed */
-  max-width: 620px; /* adjust as needed */
-  max-height: 750px; /* adjust as needed */
+  width: 60%;
+  height: 69%;
+  max-width: 620px;
+  max-height: 750px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -372,7 +369,7 @@ body {
 
 .scroll-content {
   position: absolute;
-  top: 20%; /* adjust for scroll image */
+  top: 20%;
   left: 27%;
   z-index: 2;
   text-align: justify;
