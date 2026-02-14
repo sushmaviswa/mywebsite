@@ -1,8 +1,4 @@
-// This file contains JavaScript functionality for the website, including interactive elements and animations.
-
 document.addEventListener('DOMContentLoaded', () => {
-
-  // Music player logic
   const audio = document.getElementById('dreamer-audio');
   const playBtn = document.getElementById('play-btn');
   const progressBar = document.getElementById('progress-bar');
@@ -13,13 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let isPlaying = false;
   audio.volume = 0.5;
 
-  // Set duration when metadata is loaded
   audio.addEventListener('loadedmetadata', () => {
       duration.textContent = formatTime(audio.duration);
       progressBar.max = Math.floor(audio.duration);
   });
 
-  // Play/pause toggle
   playBtn.addEventListener('click', () => {
       const playIcon = playBtn.querySelector('img');
       
@@ -28,18 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
           audio.play();
           playIcon.src = 'assets/icons/play.png';
           playIcon.alt = 'Pause';
-          vinylImg.src = 'assets/gif/vinyl.gif'; // Show animated vinyl
+          vinylImg.src = 'assets/gif/vinyl.gif';
           isPlaying = true;
       } else {
           audio.pause();
           playIcon.src = 'assets/icons/pause.png';
           playIcon.alt = 'Play';
-          vinylImg.src = 'assets/images/static.jpg'; // Show static vinyl
+          vinylImg.src = 'assets/images/static.jpg';
           isPlaying = false;
       }
   });
 
-  // Update progress bar and time
   audio.addEventListener('timeupdate', () =>{
       progressBar.value = Math.floor(audio.currentTime);
       currentTime.textContent = formatTime(audio.currentTime);
@@ -62,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     firefly.style.top = e.pageY + 'px';
   });
 
-  // Artwork carousel logic
   const artworks = [
     'assets/images/Art1.jpg',
     'assets/images/Art2.jpg',
@@ -94,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Sky photo carousel logic
   const skyPhotos = [
     'assets/images/sky1.jpg',
     'assets/images/sky2.jpg',
